@@ -1,0 +1,6 @@
+gradio>=3.0
+opencv-python
+deepface
+numpy
+pandas
+sqlite3
