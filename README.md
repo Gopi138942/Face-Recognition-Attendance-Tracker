@@ -3,6 +3,9 @@
 
 ## Description
 This project allows you to track the attendance of students in an online class using face recognition. The system matches the face from an uploaded class video with the students' profile pictures and tracks attendance based on their presence for more than 80% of the video duration.
+check out here:
+https://huggingface.co/spaces/gopi135942/Face_recognition_attendance_Tracker
+
 
 ## Requirements
 
