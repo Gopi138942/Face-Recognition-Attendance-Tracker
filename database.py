@@ -5,7 +5,7 @@ from datetime import datetime
 
 class AttendanceDB:
     def __init__(self, db_path="attendance.db"):
-        self.conn = sqlite3.connect(db_path)
+        self.conn = sqlite3.connect(db_path, check_same_thread=False))
         self.create_tables()
     
     def create_tables(self):
@@ -33,7 +33,7 @@ class AttendanceDB:
         """Register new student with face embedding"""
         self.conn.execute(
             "INSERT INTO students VALUES (?, ?, ?)",
-            (student_id, name, pickle.dumps(embedding))
+            (student_id, name, pickle.dumps(embedding)))
         self.conn.commit()
     
     def get_students(self):
@@ -55,3 +55,10 @@ class AttendanceDB:
             (class_id, student_id, datetime.now().date(), duration, status)
         )
         self.conn.commit()
+
+import threading
+
+def handle_request():
+    conn = sqlite3.connect("attendance.db")  # Create a new connection for each thread
+    db = AttendanceDB(conn)
+    # Your database operations go here
